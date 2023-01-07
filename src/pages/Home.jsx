@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import styled, { keyframes } from "styled-components";
 import TypeIt from "typeit-react";
+import Profile from "../img/profile_emoji.PNG";
 
 const BackgroundDiv = styled.div`
   width: 100vw;
@@ -74,7 +75,7 @@ const BlurDivBlue = styled.div`
   background-color: #caecf6;
   border-radius: 50%;
   filter: blur(50px);
-  animation: ${AnimeBlue} 3s infinite;
+  animation: ${AnimeBlue} 2s infinite;
 `;
 
 const BlurDivYellow = styled.div`
@@ -87,7 +88,7 @@ const BlurDivYellow = styled.div`
   background-color: #e9cfa7;
   border-radius: 50%;
   filter: blur(50px);
-  animation: ${AnimeYellow} 3s infinite;
+  animation: ${AnimeYellow} 2s infinite;
 `;
 
 const TextDiv = styled.div`
@@ -97,6 +98,25 @@ const TextDiv = styled.div`
   font-size: 3rem;
   color: #061d35;
   font-family: edu;
+`;
+
+const ProfileEmoji = styled.img`
+  position: absolute;
+  width: 35%;
+  right: 20%;
+  top: 15%;
+`;
+
+const IntroduceDiv = styled.div`
+  margin-top: 4%;
+`;
+const Introduce = styled.div`
+  -webkit-text-stroke: 1.5px #061d35;
+  padding-top: 2%;
+  font-size: 2.5rem;
+  font-family: edu;
+  letter-spacing: 1px;
+  color: transparent;
 `;
 
 function Home(props, ref) {
@@ -114,9 +134,9 @@ function Home(props, ref) {
               .type("안녕하세요. ")
               .pause(750)
               .delete()
-              .type("성취하며 느낀 행복을 오랫동안")
+              .type("성취하며 느낀 행복을")
               .break()
-              .type("기억하는")
+              .type("오랫동안 기억하는")
               .pause(750)
               .delete()
               .type("꾸준한 성장을 지향하는")
@@ -128,7 +148,16 @@ function Home(props, ref) {
             return instance;
           }}
         ></TypeIt>
+        <IntroduceDiv>
+          <Introduce>
+            Computer Science <br />
+            &amp; Engineering
+          </Introduce>
+          <Introduce>Front-End</Introduce>
+          <Introduce>AI</Introduce>
+        </IntroduceDiv>
       </TextDiv>
+      <ProfileEmoji src={Profile}></ProfileEmoji>
     </BackgroundDiv>
   );
 }
