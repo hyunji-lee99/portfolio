@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #f5f4f4;
 }
 
 .App-logo {
@@ -35,4 +36,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@font-face {
+  font-family: "Edu";
+  src: url("./fonts/edu.otf");
 }
