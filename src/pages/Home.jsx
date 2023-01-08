@@ -21,25 +21,25 @@ const BlurDiv = styled.div`
 
 const AnimePink = keyframes`
   0%{
-    transform:translate(20px,0);
+    transform:translate(-30px,0);
   }
   50%{
-    transform:translate(0,50px);
+    transform:translate(30px,100px);
   }
   100%{
-    transform:translate(20px,0);
+    transform:translate(-30px,0);
   }
 `;
 
 const AnimeBlue = keyframes`
   0%{
-    transform:translate(0,0);
+    transform:translate(0,30px);
   }
   50%{
-    transform:translate(50px,150px);
+    transform:translate(350px,0px);
   }
   100%{
-    transform:translate(0,0);
+    transform:translate(0,30px);
   }
 `;
 
@@ -48,7 +48,7 @@ const AnimeYellow = keyframes`
     transform:translate(0,0);
   }
   50%{
-    transform:translate(-50px,100px);
+    transform:translate(-300px,100px);
   }
   100%{
     transform:translate(0,0);
@@ -75,7 +75,7 @@ const BlurDivBlue = styled.div`
   background-color: #caecf6;
   border-radius: 50%;
   filter: blur(50px);
-  animation: ${AnimeBlue} 2s infinite;
+  animation: ${AnimeBlue} 3s infinite;
 `;
 
 const BlurDivYellow = styled.div`
@@ -88,7 +88,7 @@ const BlurDivYellow = styled.div`
   background-color: #e9cfa7;
   border-radius: 50%;
   filter: blur(50px);
-  animation: ${AnimeYellow} 2s infinite;
+  animation: ${AnimeYellow} 3s infinite;
 `;
 
 const TextDiv = styled.div`
@@ -108,15 +108,51 @@ const ProfileEmoji = styled.img`
 `;
 
 const IntroduceDiv = styled.div`
-  margin-top: 4%;
+  padding-left: 10%;
+  position: absolute;
+  width: 100%;
+  bottom: 20%;
+  color: #061d35;
 `;
 const Introduce = styled.div`
   -webkit-text-stroke: 1.5px #061d35;
   padding-top: 2%;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: edu;
   letter-spacing: 1px;
   color: transparent;
+`;
+
+const Vibration = keyframes`
+from {
+  transform: rotate(1deg);
+}
+to {
+  transform: rotate(-1deg);
+}
+`;
+
+const AboutDiv = styled.div`
+  width: 30%;
+  overflow: auto;
+  margin-top: 10px;
+  padding: 10px;
+  box-shadow: 3px 3px 3px gray;
+  background-color: #f5f4f4;
+  border-radius: 15px;
+  &:hover {
+    animation: ${Vibration} 1s infinite;
+  }
+`;
+
+const AboutUl = styled.ul`
+  list-style: none;
+  font-family: edu;
+  padding-left: 10px;
+`;
+
+const Aboutli = styled.li`
+  margin-top: 10px;
 `;
 
 function Home(props, ref) {
@@ -129,6 +165,7 @@ function Home(props, ref) {
       </BlurDiv>
       <TextDiv>
         <TypeIt
+          options={{ loop: true }}
           getBeforeInit={(instance) => {
             instance
               .type("안녕하세요. ")
@@ -148,15 +185,20 @@ function Home(props, ref) {
             return instance;
           }}
         ></TypeIt>
-        <IntroduceDiv>
-          <Introduce>
-            Computer Science <br />
-            &amp; Engineering
-          </Introduce>
-          <Introduce>Front-End</Introduce>
-          <Introduce>AI</Introduce>
-        </IntroduceDiv>
       </TextDiv>
+      <IntroduceDiv>
+        <Introduce>About Me</Introduce>
+        <AboutDiv>
+          <AboutUl>
+            <Aboutli>📍 Daegu, South Korea</Aboutli>
+            <Aboutli>✏️ 경북대학교 컴퓨터학부</Aboutli>
+            <Aboutli>🙆🏻‍♀️ Google Developers Student Club FE member</Aboutli>
+            <Aboutli>
+              🏢 <b>前</b>) DAIB 주식회사 Freelance Developer
+            </Aboutli>
+          </AboutUl>
+        </AboutDiv>
+      </IntroduceDiv>
       <ProfileEmoji src={Profile}></ProfileEmoji>
     </BackgroundDiv>
   );
