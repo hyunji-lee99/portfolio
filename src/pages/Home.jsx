@@ -8,8 +8,9 @@ const BackgroundDiv = styled.div`
   height: 100vh;
   position: relative;
   background-color: #f5f4f4;
-  z-index: -3;
+  z-index: 0;
 `;
+
 const BlurDiv = styled.div`
   width: 100%;
   height: 100%;
@@ -124,11 +125,14 @@ const Introduce = styled.div`
 `;
 
 const Vibration = keyframes`
-from {
+0% {
   transform: rotate(1deg);
 }
-to {
-  transform: rotate(-1deg);
+50%{
+  transform:rotate(-1deg)
+}
+100% {
+  transform: rotate(1deg);
 }
 `;
 
@@ -140,8 +144,9 @@ const AboutDiv = styled.div`
   box-shadow: 3px 3px 3px gray;
   background-color: #f5f4f4;
   border-radius: 15px;
+  z-index: 1000;
   &:hover {
-    animation: ${Vibration} 1s infinite;
+    animation: ${Vibration} 0.5s infinite;
   }
 `;
 

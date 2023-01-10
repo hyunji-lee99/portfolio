@@ -6,7 +6,7 @@ const Div = styled.div`
   height: 100vh;
   background-color: #f5f4f4;
   position: relative;
-  z-index: -3;
+  z-index: -4;
 `;
 
 const BlurDiv = styled.div`
@@ -16,6 +16,7 @@ const BlurDiv = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
+  z-index: -3;
 `;
 
 const AnimePink = keyframes`
@@ -35,7 +36,7 @@ const AnimeBlue = keyframes`
     transform:translate(0,30px);
   }
   50%{
-    transform:translate(350px,0px);
+    transform:translate(30px,0px);
   }
   100%{
     transform:translate(0,30px);
@@ -111,25 +112,38 @@ const BlurDivPurple = styled.div`
   background-color: #c2b9d8;
   border-radius: 50%;
   filter: blur(50px);
-  animation: ${AnimeBlue} 3s infinite;
+  animation: ${AnimePurple} 3s infinite;
 `;
 
 const SkillDiv = styled.div`
   width: 100%;
-  padding-top: 110px;
   color: #061d35;
+  margin-top: 50px;
 `;
 
+const Vibration = keyframes`
+  from{
+    transform:rotate(2deg);
+  }
+  to{
+    transform:rotate(-2deg);
+  }
+`;
 const Skills = styled.div`
   width: 20%;
+  z-index: 1000;
   height: 80px;
   overflow: scroll;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   padding: 10px 20px;
-  text-align: center;
   font-family: edu;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  &:hover {
+    animation: ${Vibration} 0.1s infinite;
+  }
 `;
 
 const SkillFlexThree = styled.div`
@@ -143,12 +157,17 @@ const SkillFlexTwo = styled.div`
   margin-bottom: 30px;
 `;
 
-const SkillTitle = styled.p`
-  font-size: 1.5rem;
+const SkillTitle = styled.span`
+  font-size: 2rem;
 `;
 
-const SkillDetail = styled.p``;
-
+const ExplainLevelDiv = styled.div`
+  width: 30%;
+  padding-top: 8%;
+  font-family: edu;
+  color: #061d35;
+  padding-left: 8%;
+`;
 function Skill(props, ref) {
   return (
     <Div {...props} ref={ref}>
@@ -158,44 +177,48 @@ function Skill(props, ref) {
         <BlurDivYellow></BlurDivYellow>
         <BlurDivPurple></BlurDivPurple>
       </BlurDiv>
+      <ExplainLevelDiv>
+        1️⃣ : 개념을 알고, 한 두번 사용해본 정도
+        <br /> 2️⃣ : 적당한 구현이 가능한 정도 <br />
+        3️⃣ : 능숙하게 사용할 수 있는 정도
+      </ExplainLevelDiv>
       <SkillDiv>
         <SkillFlexThree>
           <Skills>
-            <SkillTitle>React.js</SkillTitle>
-            <SkillDetail></SkillDetail>
+            <SkillTitle>React.js 3️⃣</SkillTitle>
           </Skills>
           <Skills>
-            <SkillTitle>HTML/CSS</SkillTitle>
+            <SkillTitle>HTML/CSS 3️⃣</SkillTitle>
           </Skills>
           <Skills>
-            <SkillTitle>TypeScript</SkillTitle>
+            <SkillTitle>TypeScript 1️⃣</SkillTitle>
           </Skills>
         </SkillFlexThree>
         <SkillFlexTwo>
           <Skills style={{ marginRight: "6%" }}>
-            <SkillTitle>Django</SkillTitle>
+            <SkillTitle>Django 3️⃣</SkillTitle>
           </Skills>
           <Skills>
-            <SkillTitle>Django Rest Framework</SkillTitle>
+            <SkillTitle>Django Rest Framework 3️⃣</SkillTitle>
           </Skills>
         </SkillFlexTwo>
         <SkillFlexThree>
           <Skills>
-            <SkillTitle>Python</SkillTitle>
+            <SkillTitle>Python 3️⃣</SkillTitle>
           </Skills>
           <Skills>
-            <SkillTitle>JavaScript</SkillTitle>
+            <SkillTitle>JavaScript 3️⃣</SkillTitle>
           </Skills>
           <Skills>
-            <SkillTitle>C</SkillTitle>
+            <SkillTitle>C 2️⃣</SkillTitle>
           </Skills>
         </SkillFlexThree>
         <SkillFlexTwo>
           <Skills style={{ marginRight: "6%" }}>
-            <SkillTitle>Sklearn</SkillTitle>
+            <SkillTitle>Sklearn 2️⃣</SkillTitle>
           </Skills>
           <Skills>
-            <SkillTitle>Torch</SkillTitle>
+            <SkillTitle>Torch 2️⃣</SkillTitle>
           </Skills>
         </SkillFlexTwo>
       </SkillDiv>
